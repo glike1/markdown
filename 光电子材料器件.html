@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>&midast;&midast;&#x7B2C;&#x4E00;&#x7AE0;&midast;&midast;</title>
+        <style>
+/* From extension foam.foam-vscode */
+.foam-placeholder-link {
+  color: var(--vscode-editorWarning-foreground);
+  cursor: default;
+}
+
+.foam-note-link,
+.foam-attachment-link {
+  color: var(--vscode-textLink-foreground);
+
+}
+
+.foam-tag {
+  color: var(--vscode-editorLineNumber-foreground)
+}
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #abb2bf;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  font-size: inherit;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #f0f0f0;
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-size: 1.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-size: 1em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-size: 0.875em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr {
+  /* background-color: #fff; */
+  /* border-top: 1px solid #c6cbd1; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table tr:nth-child(2n) {
+  /* background-color: #f6f8fa; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: #abb2bf;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h3 id="第一章"><strong>第一章</strong></h3>
+<ol>
+<li><strong>本征半导体以及非本征半导体(p2)</strong><br>
+本征半导体是纯净而不含任何杂质的理想半导体材料.<br>
+本征半导体中的电子浓度n与空穴浓度p相等.</li>
+<li><strong>直接带隙和间接带隙半导体(p3)</strong><br>
+如果导带底与价带顶的位置相同,即对应相同的波矢,则相应的带隙为直接带隙.<br>
+如果导带底与价带顶的位置不同,即对应不同的波矢,则相应的带隙为间接带隙.</li>
+<li><strong>半导体发光</strong><br>
+半导体中的电子由高能态向低能态跃迁的同时,会以光子的形式释放多余的能量,这成为辐射跃迁.辐射跃迁的过程也就是半导体材料的发光过程。<br>
+光致发光:半导体材料吸收更高能量的光子后光的再发射过程<br>
+电致发光:半导体材料中通过电流激发引起的光发射过程<br>
+<strong>图1-9 室温下三五族发光材料的发射波长范围</strong><br>
+GaAsP室温下,x&lt;0.45为直接跃迁型,x&gt;0.45时成为间接带隙材料</li>
+<li><strong>发光二极管基本原理</strong><br>
+p区空穴向n区扩散,在Pn结附近形成电子和空穴同时存在的区域.电子和空穴在该区域通过辐射复合,并辐射能量约为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mi>g</mi></msub></mrow><annotation encoding="application/x-tex">E_g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>的光子,电子和空穴复合过程,产生光子.</li>
+<li><strong>同质结LED</strong><br>
+半导体相对于空气为光密介质,折射率通常较高,只有小于全反射临界角的光才能形成部分反射大部分离开发光二极管,形成有效的光辐射.</li>
+<li><strong>双异质结LED</strong><br>
+可以使用性能更为优异的异质结结构.所谓异质结是指由不同带隙宽度的半导体材料构成的pn结.半导体材料的折射率与带隙宽度有关,半导体材料的带隙越宽其折射率相对越低.</li>
+<li><strong>同质结激光器的缺点(同质结半导体的主要缺点是,阈值电流密度非常高.)</strong><br>
+同质结半导体发光二极管的缺点是:为了减少光辐射的再吸收以利于光辐射的逃逸,需要使用尽可能薄的p型层,但太薄的p型层不利于电子与空穴的辐射复合,使部分注入电子到达P型层表面时与表面附近的晶体缺陷复合,这种非辐射复合降低了输出光的辐射效率.</li>
+<li><strong>同质和异质的比较</strong><br>
+双异质结发光二极管的发光效率远高于普通同质结发光二极管.</li>
+<li><strong>量子阱半导体激光器及其优势</strong><br>
+量子阱半导体激光器有几个明显的优势:
+<ol>
+<li>产生激光振荡的阈值电流显著降低</li>
+<li>由于发射波长对量子阱尺寸的依赖性,可以通过结构尺寸上的设计在一定范围内实现特定波长的半导体激光器.</li>
+</ol>
+</li>
+</ol>
+<h3 id="第二章"><strong>第二章</strong></h3>
+<p>固体激光材料由基质材料和激活离子两部分组成,其中基质材料决定了工作物质的各种物理化学性质,而激活离子主要决定了工作物质的光谱性质.<br>
+常用的基质材料有玻璃,晶体和陶瓷三大类。<br>
+<strong>固体激光材料热效应研究的实例(要求不多)</strong></p>
+<ol>
+<li>单端泵浦,周边恒温方形激光晶体热模型</li>
+<li>方形激光晶体内部温度场</li>
+<li>方形激光晶体泵浦端面热形变场</li>
+<li>几种常用激光晶体热效应对比分析</li>
+<li>激光晶体热效应实验分析</li>
+</ol>
+<h3 id="第三章"><strong>第三章</strong></h3>
+<p><strong>光纤导光的基本原理</strong>--全反射<br>
+光纤是一种工作在光波波段的介质波导，通常是圆柱形。它是利用全反射原理把光频电磁波的能量约束在其结构内，并引导光波沿光纤轴向传播。光纤的传输特性由其结构和材料决定。<br>
+<strong>约束及导光机制</strong><br>
+从光纤端面入射的光线可分为两种类型，一类是子午光线（入射光线通过圆柱波导轴线），<br>
+另一类是偏射光线（入射光线不通过圆柱波导轴线）<br>
+子午光线<br>
+全反射形成的光线,是一个平面,成为子午面<br>
+偏射光线</p>
+<p><strong>光纤的特性参数</strong></p>
+<ol>
+<li>
+<p>数值孔径<br>
+数值孔径定义为光纤接受外来入射光的最大受光角的正弦与入射区折射率的乘积.影响光学性能的主要因素,必考<br>
+<strong>光线材料的吸收损耗,散射损耗</strong><br>
+吸收损耗为材料的本征吸收损耗,杂质吸收损耗和原子缺陷吸收损耗<br>
+散射损耗包括瑞利散射,波导散射和非线性效应散射损耗</p>
+</li>
+<li>
+<p><strong>光纤无源器件的分类:九种,至少七种</strong><br>
+光纤连接器,光耦合器,光开关,光衰减器,光隔离器,光滤波器和波分复用/解复用器</p>
+</li>
+<li>
+<p><strong>拉曼光纤放大器</strong>:向光纤中输入强功率的光信号时,输入光的一部分将变成比输入光波长更长的广播信号输出,这种现象称为拉曼散射.<br>
+<em>习题:</em></p>
+</li>
+<li>
+<p><strong>影响光纤传输损耗的主要因素有哪些?在光纤通信中,常用的通信窗口有哪些?为什么光纤通信正向着1.5μm的长波方向发展?</strong><br>
+光纤的损耗因素主要有吸收损耗,散射损耗和弯曲损耗.850nm窗口,1310nm窗口,1550nm窗口.第二,第三窗口的损耗更低;第二窗口处波导色散和材料色散相反,有可能使二者相抵消,使总色散为0,随着第三窗口能放大光信号掺饵放大器的发明和实用化,研究和应用的重点移到了第三窗口.</p>
+</li>
+<li>
+<p><strong>什么是光纤的色散?为什么长距离光通信要用单模光纤?</strong><br>
+在光纤中传输的光信号的不同频率成分或不同模式分量以不同的模式分量以不同的速度传播,到达一定距离后必定产生信号失真,这种现象称为光纤的色散.<br>
+单模光纤的带宽比多模光纤要高,以极为昂贵的激光作为光源,可以实现大容量,远距离的传输.</p>
+</li>
+<li>
+<p><strong>对光隔离器的基本要求是什么?简述偏振相关型光隔离器的工作原理.</strong><br>
+插入损耗和隔离度是隔离器的两个主要参数,对正向入射光的插入损耗值越小越好,对反向反射光的光隔离度越大越好.</p>
+<p><strong>偏振相关型光隔离器</strong>:</p>
+<ul>
+<li>无论入射光是否是线偏振光,出射光一定是线偏振光</li>
+<li>它由起偏器和检偏器以及放置在它们之间的法拉第旋转器构成</li>
+<li>起偏器将输入光起偏在一定方向,当偏振光通过法拉第旋转器后其偏振方向将被旋转45°.检偏器偏振方向刚好与起偏器成45°,因而法拉第旋转器出射的光很容易透过它.当反射光回到隔离器时,首先经过起偏器的光是偏振方向与之一致的部分,随后这些光的偏振方向又被法拉第旋转其旋转45°,而且与入射光偏振方向的旋转在同一方向上,因而经过法拉第旋转器后的光其偏振方向与起偏器成90°,这样,反射光就被起偏器所隔离,而不能返回到入射光一端.</li>
+</ul>
+</li>
+<li>
+<p><strong>光纤光栅激光器主要分为哪几类?</strong><br>
+光纤光栅激光器在频域上可分为单波长和多波长两大类，在时域上可分为连续和脉冲两大类。<br>
+单波长光纤光栅激光器有两种构型：一种是分布布拉格发射器光纤光栅激光器,另一种是分布反馈光纤光栅激光器。<br>
+多波长光纤光栅激光器有三类:</p>
+<ol>
+<li>一是利用光纤光栅提供光反馈的多波长光纤光栅激光器</li>
+<li>二是利用滤波机理实现多波长的光纤光栅激光器</li>
+<li>三是其它类型的多波长光纤光栅激光器</li>
+</ol>
+</li>
+<li>
+<p><strong>简述拉曼光纤放大器的工作原理.</strong><br>
+拉曼光纤放大器的工作原理是基于光纤的拉曼效应。当向光纤中输入强功率的光信号时,输入光的一部分将变换成比输入光波长更长的光波信号输出,这种现象称为拉曼散射。这是由于输入光功率的一部分在光纤的晶格运动中消耗产生的现象。如果输入光是泵浦激光,则变换波长的光又称为斯托克斯(stokes)光火自发拉曼散射光。当把与斯托克斯光相同的光输入到光纤中,会使波长变换更加显著(即感应拉曼散射)。例如,在光纤中输入小功率1550nm光信号时,光纤输出的光时经光线传播衰减的光。应用这一原理制成的光纤放大器成为拉曼光纤放大器。</p>
+</li>
+</ol>
+<h3 id="第四章"><strong>第四章</strong></h3>
+<ol>
+<li>非线性光学效应简述</li>
+<li><strong>二次谐波效应</strong><br>
+光倍频及混频效应也成为二次谐波效应，是非线性介质在激光作用下的二次非线性光学效应<br>
+习题</li>
+<li><strong>什么是光学非线性效应?</strong>
+<ol>
+<li>光学非线性效应是指强光作用下由于介质的非线性极化而产生的</li>
+</ol>
+</li>
+<li><strong>实现倍频的相位匹配条件是什么?其相位匹配的物理实质是什么?</strong>
+<ol>
+<li>实现倍频的相位匹配条件:相位因子=1成立</li>
+<li>物理实质:物理实质上保证极化波在介质中不同位置处辐射是同相位的，相干叠加结果是相干加强的。只有在相位匹配的条件下，才可获得最高的频率转换效率。</li>
+</ol>
+</li>
+</ol>
+<h3 id="第五章"><strong>第五章</strong></h3>
+<ol>
+<li><strong>电光效应</strong><br>
+当光介质的两端外加电场较强时，介质内的电子分布状态将发生变化，以致介质的极化强度及折射率也各向异性地发生变化，这种现象称之为电光效应。</li>
+<li><strong>声光调制中的声光效应</strong><br>
+由于声波的作用而引起介质光学性质变化的现象称为声光效应，声光效应是光弹效应的一种。</li>
+<li><strong>磁光调制中的磁光效应</strong><br>
+若沿物体的某一方向施加一外磁场，物体内各磁畴的磁矩就会向磁场方向偏转，对外呈现磁性，从而引起物质的光学各向异性，这种现象称为磁光效应。当光波通过磁化介质时，其传播特性会发生变化。</li>
+<li>直接调制是将要传递的信息转变为电流信号注入半导体光源(半导体激光器LD或者半导体二极管LED),从而使输出光携带信息.<br>
+<em>习题</em></li>
+<li><strong>对光进行外调制有哪些典型方式?</strong>
+<ol>
+<li>电光调制、声光调制、磁光调制</li>
+</ol>
+</li>
+<li><strong>简述电光效应引起的典型物理现象.</strong>
+<ol>
+<li>利用电光效应能使天然双折射晶体中形成新的光轴，或者使各向异性的天然晶体产生双折射。这种效应的弛豫时间很短，外场的施加或撤销导致的折射变化或恢复瞬间即可完成，因而可用作高速调制器，高速开关等。</li>
+</ol>
+</li>
+<li><strong>何为电光效应?分析超声行波和超声驻波在介质中传播时引起介质折射率的变化.</strong>
+<ol>
+<li>当光介质的两端外加电场较强时,介质内的电子分布状态将发生变化,以致介质的极化强度及折射率也各向异性地发生变化,这种现象称为电光效应。</li>
+</ol>
+</li>
+<li><strong>简述声光调制器的工作原理.</strong>
+<ol>
+<li>声光调制是利用声光效应将信息加载于光频载波上的一种物理过程。调制信号是以电信号(幅值)形式作用于电---声换能器上产生射频超声波,耦合至声光介质,形成超声光栅。当光波通过声光介质时,由于声光作用,光载波受到调制而成为&quot;携带&quot;信息的强度调制波。</li>
+</ol>
+</li>
+<li><strong>简述半导体激光器(LD)直接调制的原理。</strong>
+<ol>
+<li>输出功率和调制信号曲线图<br>
+为了获得线性调制，使工作点位于输出特性曲线的直线部分，必须在调制信号电流的同时加一个偏执电流Ib，这样可以使输出信号不失真。避免直流偏置源对输出信号产生影响，应该把直流偏置源和信号相隔离。频率较低时，可用电容和电感线圈串联来实现，频率较高时采用高通滤波电路。另外，偏置电流会影响LD的调制性能，通常选择Ib在阈值电流附近且略低于It，以使LD获得更高的调制速率。</li>
+<li>半导体激光器处于连续工作状态时，无论有无调制信号，由于有直接偏置Ib，所以功耗较大，从而引起温升，会影响或破坏器件的正常工作。双异质结的出现，使激光器的阈值电流密度比同质结大为降低，可在室温下连续调制方式工作。<br>
+要使半导体激光器在高频调制下不产生调制失真，最基本的要求是：输出功率应与阈值以上的电流呈良好的线性关系；另外，为了克服弛豫震荡，应采用条宽较窄的激光器结构。直接调制会使激光器主模强度下降，而次模强度相对增大，从而使激光器谱线加宽。而调制所产生的脉冲宽度  与谱线宽度  相互制约。因此，直接调制半导体激光器的调制能力受到乘积的限制。故在高频调制下宜采用量子阱结构或其他调制器</li>
+</ol>
+</li>
+<li><strong>半导体光调制器分为哪几类?</strong><br>
+声光调制器、电光调制器、磁光调制器、点吸收调制器<br>
+三四族化合物半导体光调制器<br>
+主要包括垂直腔反射式光调制器<br>
+短腔调制器<br>
+电子耗尽控制吸收的光调制器<br>
+GaAs/AlGaAs行波电极电光调制器</li>
+</ol>
+<p>Si基光调制器<br>
+固体激光器<br>
+泵浦源为卤素灯，将调制信号加载到卤素灯上，进行激光调制</p>
+<h3 id="第六章"><strong>第六章</strong></h3>
+<p><strong>光电二极管的原理和特性</strong><br>
+光电二极管的原理光电二极管的原理是光生伏特效应，光生伏特效应就是半导体吸收光能后者pn结上产生光生电动势的效应。<br>
+当给pn结加反偏电压时，外电场和pn结的自建场同向相加，加快了非平衡载流子的漂移速度，并能在外电路中形成光电流。<br>
+<strong>PIN光电二极管的特点:</strong><br>
+1) 由于结电容较小,有效改善了频率响应特性,PIN光电二极管的结电容一般为数皮法,频率上限达数吉赫兹.<br>
+2) 本征层的电阻率极高,有效地减小了暗电流,如Si-PIN的暗电流小于1nA.<br>
+3) 耗尽层显著加宽,量子效率提高,PIN光电二极管的响应光谱展宽,长波的光谱特性得到了改善.</p>
+<ol>
+<li><strong>雪崩光电二极管的原理</strong><br>
+PIN光电二极管即使在最大的响应度下，一个光子最多也只能产生一对电子-空穴对，是一种内部无增益的器件<br>
+基于载流子雪崩效应，从而提高电流内增益的光电二极管称为雪崩二极管（APD）</li>
+<li><strong>光电池的原理,分类和结构</strong><br>
+光电池的原理为光生伏特效应:光入射到pn结时,如果光子能量hv&gt;E,则产生光生载流子.光生载流子在pn结内电场的作用下分离,电子和空穴分别积累在n区和p区,在p区和n区产生电势差.<br>
+非晶硅/多晶硅叠层薄膜太阳能电池(是串联结构,电流匹配,电流要一样)</li>
+</ol>
+<h3 id="第七章"><strong>第七章</strong></h3>
+<p><strong>液晶显示材料的工作原理和基本结构</strong><br>
+液晶结构类型:近晶相,向列相,胆甾相<br>
+液晶显示的原理是液晶材料中电场的作用下对外界光进行调制,从而实现显示<br>
+等离子体显示器,</p>
+<ol>
+<li>主动发光,亮度高</li>
+<li>可实现全彩显示</li>
+<li>具有固有的存储特性,行驱动能力强,可实现大幅面显示</li>
+<li>视角大,与CRT相当</li>
+<li>响应速度快,达微秒数量级,可流畅地显示视频图像</li>
+<li>寿命长,可达数万小时<br>
+<strong>电致发光显示</strong>:是将电能直接转化为光能的发光形式。可分为注入型电致发光和高场型电致发光。<br>
+优点:<br>
+1) 主动发光<br>
+2) 阈值电压低<br>
+3) 可柔性化显示<br>
+4) 是未来显示器的方向<br>
+<strong>核心原理</strong>:pn结注入式发光<br>
+<strong>器件典型结构</strong>:核心结构有七层<br>
+1. 空穴传输层<br>
+2. 电子传输层<br>
+3. 阴极<br>
+4. 阳极<br>
+5. 发光层<br>
+6. 空穴注入层<br>
+7. 电子注入层</li>
+</ol>
+<h3 id="第八章"><strong>第八章</strong></h3>
+<ol>
+<li>光子晶体是一种折射率在空间中呈周期性分布的物质结构,通常由两种或者两种以上具有不同折射率的材料构成.这种周期性结构会对沿特定方向传播的电磁波产生布拉格散射.</li>
+<li><strong>光子晶体禁带:</strong><br>
+在光子晶体中，折射率呈周期性分布，当这种周期性与光波长相比拟，并且折射率变化足够大时，光子晶体中出现禁带。禁带频率对应的光，被严格禁止传播。</li>
+<li><strong>超材料的概念(只看这个)</strong><br>
+超材料或称特异材料，是一种人工电磁材料，具有天然材料不具有超常电磁光学性质。这些性质来源人工设计的特殊微观结构。</li>
+</ol>
+
+    </body>
+    </html>
